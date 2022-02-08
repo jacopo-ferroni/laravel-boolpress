@@ -19,5 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/test', function() {
-    return 'Hello';
+    return response()->json([
+        'clients' => ['Paolo', 'Giorgio', 'Marta', 'Jacopo'],
+        'lorem' => 'ipsum',
+    ]);
+});
+
+Route::namespace('Api')->group(function() {
+    Route::get('/post', 'PostController@index');
 });
