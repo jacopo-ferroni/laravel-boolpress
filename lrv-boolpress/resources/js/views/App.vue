@@ -1,7 +1,20 @@
 <template>
     <div>
-        <h1>Work in progress</h1>
-        <p>Sito in costruzione</p>
+        <div class="container text-center">
+            <h1 class="m-5">Our Blog</h1>
+
+            <div v-if="posts">
+                    <article class="mb-4" v-for="post in posts" :key="'post-${ post.id}'">
+                        <h2>{{post.title}}</h2>
+                        <div mb-4>{{post.created_at}}</div>
+                        <div mb-4>{{post.content}}</div>
+                    </article>
+            </div>
+
+            <div v-else>
+                Loading Posts... be quiet!
+            </div>
+        </div>
     </div>
 </template>
 

@@ -1915,6 +1915,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
   components: {},
@@ -3075,20 +3088,39 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h1", [_vm._v("Work in progress")]),
+  return _c("div", [
+    _c("div", { staticClass: "container text-center" }, [
+      _c("h1", { staticClass: "m-5" }, [_vm._v("Our Blog")]),
       _vm._v(" "),
-      _c("p", [_vm._v("Sito in costruzione")]),
-    ])
-  },
-]
+      _vm.posts
+        ? _c(
+            "div",
+            _vm._l(_vm.posts, function (post) {
+              return _c(
+                "article",
+                { key: "post-${ post.id}", staticClass: "mb-4" },
+                [
+                  _c("h2", [_vm._v(_vm._s(post.title))]),
+                  _vm._v(" "),
+                  _c("div", { attrs: { "mb-4": "" } }, [
+                    _vm._v(_vm._s(post.created_at)),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { attrs: { "mb-4": "" } }, [
+                    _vm._v(_vm._s(post.content)),
+                  ]),
+                ]
+              )
+            }),
+            0
+          )
+        : _c("div", [
+            _vm._v("\n            Loading Posts... be quiet!\n        "),
+          ]),
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
