@@ -1,9 +1,10 @@
 <template>
     <div>
-        <header>Header Here</header>
+        <Header />
 
         <main>
-            COMPONENTI SPECIFICHE PER OGNI PAGINA
+            <!-- component matched by the route will render here -->
+            <router-view></router-view>
         </main>
 
         <footer>Footer Here</footer>
@@ -11,12 +12,13 @@
 </template>
 
 <script>
+import Header from '../components/Header.vue';
 import axios from 'axios';
 
 export default {
     name: 'App',
     components: {
-        
+        Header,
     },
 }
 </script>

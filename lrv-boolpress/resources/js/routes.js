@@ -2,6 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // componenti per rotta
+import Home from './pages/Home';
+import About from './pages/About';
 
 // attivazione router in vue
 Vue.use(VueRouter);
@@ -14,7 +16,12 @@ const router = new VueRouter({
             path : '/',
             name : 'home',
             component : Home, 
-        }
+        },
+        {
+            path : '/about',
+            name : 'about',
+            component : About, 
+        },
     ]
 });
 
