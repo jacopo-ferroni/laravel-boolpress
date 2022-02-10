@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
 import Home from './pages/Home';
 import About from './pages/About';
 import Blog from './pages/Blog';
+import PostDetail from './pages/PostDetail';
 
 // attivazione router in vue
 Vue.use(VueRouter);
@@ -28,6 +29,11 @@ const router = new VueRouter({
             path : '/blog',
             name : 'blog',
             component : Blog, 
+        },
+        {
+            path : '/blog:/:slug',
+            name : 'post-detail',
+            component : PostDetail, 
         },
     ]
 });

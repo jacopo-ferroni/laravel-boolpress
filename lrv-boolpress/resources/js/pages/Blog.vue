@@ -8,6 +8,7 @@
                     <h2>{{post.title}}</h2>
                     <div mb-4>{{post.created_at}}</div>
                     <div mb-4>{{post.content}}</div>
+                    <router-link class="btn btn-warning" :to="{name : 'post-detail', params : {slug : post.slug}}">Detail</router-link>
                 </article>
             </div>
 
