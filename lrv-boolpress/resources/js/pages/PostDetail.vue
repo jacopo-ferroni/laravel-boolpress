@@ -2,7 +2,16 @@
     <section class="container">
         <div v-if="post">
             <h1 class="mb-5">{{post.title}}</h1>
+            <h4 class="mb-5">Category: {{post.category.name}}</h4>
 
+            <div class="mb-5">
+                <h4>Tags:</h4>
+                <span class="badge badge-primary mr-2" v-for="tag in post.tags" :key="`tag-${tag.id}`">
+                    {{tag.name}}
+                </span>
+            </div>
+
+            <h4>Descrizione</h4>
             <p>{{post.content}}</p>
         </div>
 
@@ -13,6 +22,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
     name : 'PostDetail',

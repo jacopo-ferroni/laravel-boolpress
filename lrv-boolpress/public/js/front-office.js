@@ -2158,6 +2158,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2172,6 +2174,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostDetail',
   data: function data() {
@@ -3747,6 +3759,36 @@ var render = function () {
     _vm.post
       ? _c("div", [
           _c("h1", { staticClass: "mb-5" }, [_vm._v(_vm._s(_vm.post.title))]),
+          _vm._v(" "),
+          _c("h4", { staticClass: "mb-5" }, [
+            _vm._v("Category: " + _vm._s(_vm.post.category.name)),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mb-5" },
+            [
+              _c("h4", [_vm._v("Tags:")]),
+              _vm._v(" "),
+              _vm._l(_vm.post.tags, function (tag) {
+                return _c(
+                  "span",
+                  {
+                    key: "tag-" + tag.id,
+                    staticClass: "badge badge-primary mr-2",
+                  },
+                  [
+                    _vm._v(
+                      "\n                " + _vm._s(tag.name) + "\n            "
+                    ),
+                  ]
+                )
+              }),
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c("h4", [_vm._v("Descrizione")]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.post.content))]),
         ])
