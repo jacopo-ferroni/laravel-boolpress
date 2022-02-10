@@ -3,7 +3,7 @@
         <div v-if="post">
             <h1 class="mb-5">{{post.title}}</h1>
 
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque maxime dolore minus dolorum illo maiores iure deleniti doloribus placeat fugiat est, voluptate, cupiditate modi assumenda inventore neque perferendis reiciendis fugit?</p>
+            <p>{{post.content}}</p>
         </div>
 
         <div v-else>
@@ -29,7 +29,7 @@ export default {
             const axios = require('axios');
 
             // Make a request for a user with a given ID
-            axios.get(`127.0.0.1:8000/api/posts/${this.$route.params.slug}`)
+            axios.get(`http://127.0.0.1:8000/api/posts/${this.$route.params.slug}`)
             .then(response => {
                 // handle success
                 console.log(response);

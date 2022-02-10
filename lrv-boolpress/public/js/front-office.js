@@ -2189,7 +2189,7 @@ __webpack_require__.r(__webpack_exports__);
       var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // Make a request for a user with a given ID
 
 
-      axios.get("127.0.0.1:8000/api/posts/".concat(this.$route.params.slug)).then(function (response) {
+      axios.get("http://127.0.0.1:8000/api/posts/".concat(this.$route.params.slug)).then(function (response) {
         // handle success
         console.log(response);
         _this.post = response.data;
@@ -3748,11 +3748,7 @@ var render = function () {
       ? _c("div", [
           _c("h1", { staticClass: "mb-5" }, [_vm._v(_vm._s(_vm.post.title))]),
           _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque maxime dolore minus dolorum illo maiores iure deleniti doloribus placeat fugiat est, voluptate, cupiditate modi assumenda inventore neque perferendis reiciendis fugit?"
-            ),
-          ]),
+          _c("p", [_vm._v(_vm._s(_vm.post.content))]),
         ])
       : _c("div", [
           _vm._v(
