@@ -2112,7 +2112,7 @@ __webpack_require__.r(__webpack_exports__);
       var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // Make a request for a user with a given ID
 
 
-      axios.get('http://127.0.0.1:8000/api/post').then(function (response) {
+      axios.get('http://127.0.0.1:8000/api/posts').then(function (response) {
         // handle success
         _this.posts = response.data;
       })["catch"](function (error) {
@@ -2166,8 +2166,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'PostDetail'
+  name: 'PostDetail',
+  data: function data() {
+    return {
+      post: null
+    };
+  },
+  created: function created() {
+    this.getPostDetail();
+  },
+  methods: {
+    getPostDetail: function getPostDetail() {
+      var _this = this;
+
+      var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // Make a request for a user with a given ID
+
+
+      axios.get("127.0.0.1:8000/api/posts/".concat(this.$route.params.slug)).then(function (response) {
+        // handle success
+        console.log(response);
+        _this.post = response.data;
+      })["catch"](function (error) {
+        // handle error
+        console.log(error);
+      }).then(function () {// always executed
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -3443,7 +3475,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("hheader", { staticClass: "mb-5" }, [
+  return _c("header", { staticClass: "mb-5" }, [
     _c("nav", { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark" }, [
       _c(
         "div",
@@ -3455,21 +3487,7 @@ var render = function () {
             [_vm._v("BoolPress")]
           ),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "navbar-toggler",
-              attrs: {
-                type: "button",
-                "data-bs-toggle": "collapse",
-                "data-bs-target": "#navbarNav",
-                "aria-controls": "navbarNav",
-                "aria-expanded": "false",
-                "aria-label": "Toggle navigation",
-              },
-            },
-            [_c("span", { staticClass: "navbar-toggler-icon" })]
-          ),
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "div",
@@ -3535,7 +3553,28 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-bs-toggle": "collapse",
+          "data-bs-target": "#navbarNav",
+          "aria-controls": "navbarNav",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation",
+        },
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
+  },
+]
 render._withStripped = true
 
 
@@ -3704,24 +3743,25 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", { staticClass: "container" }, [
+    _vm.post
+      ? _c("div", [
+          _c("h1", { staticClass: "mb-5" }, [_vm._v(_vm._s(_vm.post.title))]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque maxime dolore minus dolorum illo maiores iure deleniti doloribus placeat fugiat est, voluptate, cupiditate modi assumenda inventore neque perferendis reiciendis fugit?"
+            ),
+          ]),
+        ])
+      : _c("div", [
+          _vm._v(
+            "\n        Stiamo caricando i dettagli del post... ci scusiamo per l'attesa\n    "
+          ),
+        ]),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "container" }, [
-      _c("h1", { staticClass: "mb-5" }, [_vm._v("Post Detail Page")]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque maxime dolore minus dolorum illo maiores iure deleniti doloribus placeat fugiat est, voluptate, cupiditate modi assumenda inventore neque perferendis reiciendis fugit?"
-        ),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -19589,7 +19629,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'blog',
     component: _pages_Blog__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
-    path: '/blog:/:slug',
+    path: '/blog/:slug',
     name: 'post-detail',
     component: _pages_PostDetail__WEBPACK_IMPORTED_MODULE_5__["default"]
   }]

@@ -1,5 +1,5 @@
 <template>
-    <hheader class="mb-5">
+    <header class="mb-5">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <router-link class="navbar-brand" :to="{name : 'home'}">BoolPress</router-link>
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </nav>
-    </hheader>
+    </header>
 </template>
 
 <script>

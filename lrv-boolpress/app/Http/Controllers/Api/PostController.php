@@ -13,4 +13,13 @@ class PostController extends Controller
 
         return response()->json($posts);
     }
+
+    /* post details */
+    public function show($slug) {
+        // prendere post per slug
+        $post = Post::where('slug', $slug)->first();
+
+        // ritorno dati in json
+        return response()->json($post);
+    }
 }
