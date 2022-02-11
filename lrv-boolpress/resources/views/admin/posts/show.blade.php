@@ -4,6 +4,9 @@
     <div class="container">
         <h1 class="mb-5">{{ $post->title }}</h1>
 
+        <h4>{{ $post->created_at->isoFormat('dddd DD/MM/YYYY') }}</h4>
+        <h4 class="mb-5">{{ $post->created_at->diffForHumans() }}</h4>
+
         <div class="mb-5">
             {{-- Relative Category --}}
             <span class="mb-3">
