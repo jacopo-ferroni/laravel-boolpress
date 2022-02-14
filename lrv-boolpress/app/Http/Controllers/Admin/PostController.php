@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\Category;
 use App\Tag;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class PostController extends Controller
 {
@@ -58,6 +60,13 @@ class PostController extends Controller
         ]);
 
         $data = $request->all();
+
+        // AGGIUNTA IMAGUEN SE PRESENTE
+        if(array_key_exists('cover', $data)) {
+            // salva immagine in strorage e ottenere la path del file caricato da salvare db
+            $img_path = Storage::put('posts-covers', $data['cover']);
+            $data['cover'] = $img_path;
+        }
 
         // Create a new post
         $new_post = new Post();
@@ -194,5 +203,27 @@ class PostController extends Controller
         $post->tags()->detach();
 
         return redirect()->route('admin.posts.index')->with('deleted', $post->title);
+    }
+
+
+    /* 
+    * VALIDATION RULE 
+    */
+    private function validation_rules() {
+        return [
+            'title' => 'required|maxx:255',
+            'content' => 'required',
+            'category_id' => 'nullable!exists:categories,id',
+            'tags' => 'nullable|exists:tags, id',
+            'cover' => 'nullable|file|mimes:jpeg,bmp,png'
+        ];
+    }
+
+    private function validation_messages() {
+        return [
+            'required' => 'The :attribute is a required filed!',
+            'max' => 'Max :max characters allowed for the :attribute',
+            'required' => 'The selected category does not exists.',
+        ];
     }
 }
