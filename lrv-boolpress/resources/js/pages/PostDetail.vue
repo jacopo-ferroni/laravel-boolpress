@@ -2,7 +2,11 @@
     <section class="container">
         <div v-if="post">
             <h1 class="mb-5">{{post.title}}</h1>
-            <h4 class="mb-5">Category: {{post.category.name}}</h4>
+
+            <h4 v-if="post.category">Category: {{post.category.name}}</h4>
+            <h4 v-else>Non ci sono categorie</h4>
+
+            <img :src="post.cover" alt="" srcset="">
 
             <div class="mb-5">
                 <h4>Tags:</h4>

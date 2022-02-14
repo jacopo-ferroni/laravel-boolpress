@@ -2183,6 +2183,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostDetail',
@@ -3651,7 +3655,7 @@ var render = function () {
     _c("div", { staticClass: "container text-center" }, [
       _c("h1", { staticClass: "m-5" }, [_vm._v("Our Blog")]),
       _vm._v(" "),
-      _vm.posts
+      _vm.posts != null
         ? _c(
             "div",
             _vm._l(_vm.posts, function (post) {
@@ -3760,9 +3764,11 @@ var render = function () {
       ? _c("div", [
           _c("h1", { staticClass: "mb-5" }, [_vm._v(_vm._s(_vm.post.title))]),
           _vm._v(" "),
-          _c("h4", { staticClass: "mb-5" }, [
-            _vm._v("Category: " + _vm._s(_vm.post.category.name)),
-          ]),
+          _vm.post.category
+            ? _c("h4", [_vm._v("Category: " + _vm._s(_vm.post.category.name))])
+            : _c("h4", [_vm._v("Non ci sono categorie")]),
+          _vm._v(" "),
+          _c("img", { attrs: { src: _vm.post.cover, alt: "", srcset: "" } }),
           _vm._v(" "),
           _c(
             "div",

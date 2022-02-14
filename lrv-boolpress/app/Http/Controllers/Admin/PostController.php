@@ -109,6 +109,8 @@ class PostController extends Controller
 
         if(! $post) {
             abort(404);
+        } elseif ($post->cover) {
+            $post->cover = url('storage/' . $post->cover);
         }
 
         return view('admin.posts.show', compact('post'));
