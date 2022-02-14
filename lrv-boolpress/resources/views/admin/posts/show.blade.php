@@ -27,10 +27,16 @@
             <div class="col-6">
                 {!! $post->content !!}
             </div>
-            {{-- Image space --}}
+
+            @if ($post->cover)
+                <div class="col-md-6">
+                    <img src="{{asset('storage/' . $post->cover)}}" class="img-fluid" alt="{{$post->title}}" srcset="">
+                </div>
+            @endif
+            {{--  Image space 
             <div class="col-6">
                 Here goes image
-            </div>
+            </div> --}}
         </div>
 
         @if(!$post->tags->isEmpty())

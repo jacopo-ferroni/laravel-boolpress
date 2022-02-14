@@ -155,6 +155,16 @@ class PostController extends Controller
         // Update
         $post = Post::find($id);
 
+        // Aggiunta/Update foto se già presente
+        if (array_key_exists('cover', $data)) {
+            // remove if cover already exist
+            if($post->cover) {
+                Storage::delete($post->img);
+            }
+            
+            $data['cover'] = Storage::put('posts-covers', $data['cover']);
+        }
+
         // Slug update ONLY IF already exists
 
         if($data['title'] != $post->title) {
