@@ -207,6 +207,10 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+
+        if($post->cover) {
+            Storage::delete($post->cover);
+        }
         
         $post->delete();
 
