@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
+use App\Mail\SendWelcomeEmail;
+use Illuminate\Support\Facades\Mail;
+
 class HomeController extends Controller
 {
     // Admin Homepage
@@ -55,6 +58,8 @@ class HomeController extends Controller
         $dt = Carbon::now();
         dump($dt -> isoFormat('dddd DD/MM/YYYY')); // isoFormat() è importante perchè ti permette di avere la traduzione
         dump($dt -> locale());
+
+        Mail::to('account@mail.it')->send(new SendWelcomeEmail());
 
         return view('admin.home', compact('expire'));
     }
